@@ -1,0 +1,11 @@
+{
+  "name": "xgraph-viewify",
+  "version": "4.0.0",
+  "description": "",
+  "main": "viewify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
