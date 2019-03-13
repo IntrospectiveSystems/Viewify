@@ -1,4 +1,5 @@
 //# sourceURL=Viewify
+const $ = require('jquery');
 
 /// check if ?debug is in the URL. if so, turn on debug mode.
 /// this will enable more complex logging
@@ -231,8 +232,9 @@ if (window.Preprocessor == undefined) {
 // ----------------------- Custom Errors
 class ViewNotInitializedError extends Error { }
 
-//Viewify
-if (!window.Viewify) window.Viewify = function Viewify(_class) {
+//Viewify..... ahem.... viewify!!!!!!!!!!!
+module.exports.viewify = 
+module.exports.Viewify = function Viewify(_class) {
 
 	// will scan either a prototype of dispatch table
 	let child = typeof _class == 'function' ? _class.prototype : _class;
