@@ -41,8 +41,8 @@ if (window.DIV == undefined)
 		// debugger;
 		if (selectorish) {
 			if (selectorish.search(/[#\.]/) == -1) {
-				log.w('calling DIV with a non selector string is deprecated.');
-				log.w(`use DIV(.${selectorish}) instead`);
+				console.warn('calling DIV with a non selector string is deprecated.');
+				console.warn(`use DIV(.${selectorish}) instead`);
 				elem.addClass(selectorish);
 				return elem;
 			}
@@ -139,8 +139,8 @@ if (window.Preprocessor == undefined) {
 							$(elem).on('click', _ => {
 								this.view.dispatch({ Cmd: val, Data: data, Element: elem }, (err) => {
 									if (err) {
-										log.w('xgraph-event-click::ERR');
-										log.w(err);
+										console.warn('xgraph-event-click::ERR');
+										console.warn(err);
 									}
 								});
 							});
@@ -150,8 +150,8 @@ if (window.Preprocessor == undefined) {
 							$(elem).on('change', _ => {
 								this.view.dispatch({ Cmd: val, Checked: elem.checked, Data: data, Element: elem }, (err) => {
 									if (err) {
-										log.w('xgraph-event-change::ERR');
-										log.w(err);
+										console.warn('xgraph-event-change::ERR');
+										console.warn(err);
 									}
 								});
 							});
@@ -429,8 +429,8 @@ module.exports.Viewify = function Viewify(_class) {
 		 * @memberof View
 		 */
 		DisableTitleBar() {
-			log.w('deprecated DisableTitleBar call');
-			log.w(new Error().stack);
+			console.warn('deprecated DisableTitleBar call');
+			console.warn(new Error().stack);
 			this.Vlt.titleBar.detach();
 			this.Vlt.disableTitleBar = true;
 		}
@@ -444,8 +444,8 @@ module.exports.Viewify = function Viewify(_class) {
 		 * @memberof View
 		 */
 		Clear(com, fun) {
-			log.w('deprecated clear call');
-			log.w(new Error().stack);
+			console.warn('deprecated clear call');
+			console.warn(new Error().stack);
 			this.Vlt.div.children().detach();
 			this.Vlt._root.children().detach();
 			this.Vlt._root.append(this.Vlt.styletag);
@@ -463,8 +463,8 @@ module.exports.Viewify = function Viewify(_class) {
 		 * @memberof View
 		 */
 		SetColor(com, fun) {
-			log.w('deprecated SetColor call');
-			log.w(new Error().stack);
+			console.warn('deprecated SetColor call');
+			console.warn(new Error().stack);
 			let value = com.Value || com.Color;
 			let border = com.Border || value;
 			this.Vlt._color = value;
@@ -560,8 +560,8 @@ module.exports.Viewify = function Viewify(_class) {
 		 * @memberof View
 		 */
 		GetType(com, fun) {
-			log.w('deprecated GetType call');
-			log.w(new Error().stack);
+			console.warn('deprecated GetType call');
+			console.warn(new Error().stack);
 			com.Type = this.Vlt.type;
 			fun(null, com);
 		}
@@ -576,8 +576,8 @@ module.exports.Viewify = function Viewify(_class) {
 		 * @memberof View
 		 */
 		Focus(com, fun) {
-			log.w('deprecated Focus call');
-			log.w(new Error().stack);
+			console.warn('deprecated Focus call');
+			console.warn(new Error().stack);
 			this.Vlt._root.addClass('Focus');
 			if (!this.Vlt.disableTitleBar) this.Vlt.titleBar.css('border-bottom', '1px solid var(--accent-color)');
 			fun(null, com);
@@ -917,7 +917,7 @@ module.exports.Viewify = function Viewify(_class) {
 			});
 		};
 		this.cdnImportCss = (url) => {
-			log.w('cdnImportCss is deprecated, please use global.html to import globally, or use view.x.html to import locally.');
+			console.warn('cdnImportCss is deprecated, please use global.html to import globally, or use view.x.html to import locally.');
 			$(document.head).append($(`<link href="${url}" rel="stylesheet">`));
 		};
 		this.id = str => `XGRAPH-${this.Vlt.type}-${md5(this.Par.Pid + str)}-${str}`;
@@ -952,7 +952,7 @@ module.exports.Viewify = function Viewify(_class) {
 			});
 		});
 		this.cdnImportJs = (url) => {
-			log.w('cdnImportJs is deprecated, please use global.html to import globally, or use view.x.html to import locally.');
+			console.warn('cdnImportJs is deprecated, please use global.html to import globally, or use view.x.html to import locally.');
 			return new Promise(resolve => {
 				let script = $('<script></script>');
 				$(document.head).append(script);
@@ -961,7 +961,7 @@ module.exports.Viewify = function Viewify(_class) {
 			});
 		};
 		this.partial = (filepath, parameters = {}) => {
-			log.v(`${this.Par.Module}: partial call for ${filepath}`);
+			// log.v(`${this.Par.Module}: partial call for ${filepath}`);
 
 			// if its just the name of the file, sans extension, add that.
 			if (!filepath.endsWith('.x.html')) filepath += '.x.html';
